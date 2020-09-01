@@ -28,7 +28,7 @@ router.put('/:id', (req, res) => {
     // req.body.readyToEat = req.body.readyToEat === "on" ? true : false;
     console.log(req.body)
     // Update the fruit document using our model
-    Fruit.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedFruit) => {
+    Fruit.findByIdAndUpdate(req.params.id, req.body, { new: true }, (error, updatedFruit) => {
       error ?
       res.status(404).json(error):
       res.status(200).json(updatedFruit)

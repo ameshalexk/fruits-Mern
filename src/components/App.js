@@ -29,7 +29,7 @@ export default function App(props) {
 			!submission.readyToEat
 				? (submission.readyToEat = false)
 				: (submission.readyToEat = true);
-			console.log(submission, 'lol');
+			// console.log(submission, 'lol');
 			const response = await fetch('/api', {
 				method: 'POST',
 				headers: {

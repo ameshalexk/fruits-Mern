@@ -10,6 +10,7 @@ export default function Show(props) {
 	// 	color: '',
 	// 	readyToEat: ''
 	// });
+	const [allFruits, updateAllFruits] = useState([]);
 
 	useEffect(() => {
 		(async () => {
@@ -17,7 +18,7 @@ export default function Show(props) {
 				const response = await fetch(`${endpoint}/${props.match.params.id}`);
 				const data = await response.json();
 				await updateFruit(data);
-				console.log(fruit, data);
+				console.log(fruit);
 			} catch (error) {
 				console.error(error);
 			}
@@ -26,10 +27,13 @@ export default function Show(props) {
 
 	const handleSubmit = async event => {
 		event.preventDefault();
+		// console.log(fruit, data);
+
 		// !fruit.readyToEat ? updateFruit({ ...fruit, readyToEat: false }) : fruit;
 		try {
-			const response = await fetch('/api', {
-				method: 'POST',
+			// console.log(fruit);
+			const response = await fetch(`${endpoint}/${props.match.params.id}`, {
+				method: 'PUT',
 				headers: {
 					'Content-Type': 'application/json'
 				},

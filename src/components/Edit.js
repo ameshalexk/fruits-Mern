@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 let endpoint = '/api';
 
 export default function Show(props) {
 	const [fruit, updateFruit] = useState({});
-
+	const history = useHistory();
 	// const [fruit, updateFruit] = useState({
 	// 	name: '',
 	// 	color: '',
@@ -26,9 +27,9 @@ export default function Show(props) {
 	}, []);
 
 	const handleSubmit = async event => {
-		event.preventDefault();
+		// event.preventDefault();
+		history.push('/');
 		// console.log(fruit, data);
-
 		// !fruit.readyToEat ? updateFruit({ ...fruit, readyToEat: false }) : fruit;
 		try {
 			// console.log(fruit);
@@ -40,6 +41,7 @@ export default function Show(props) {
 				body: JSON.stringify(fruit)
 			});
 			const data = await response.json();
+
 			await updateFruit({
 				name: '',
 				color: '',
